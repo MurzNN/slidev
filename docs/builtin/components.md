@@ -2,7 +2,7 @@
 
 This page lists all the built-in components provided by Slidev. These components can be **directly** used in your slides.
 
-Note that <LinkInline link="guide/theme-addon" /> can provide additional components. To add your own components, see <LinkInline link="guide/component#write" />.
+Note that <LinkInline link="guide/theme-addon" /> can provide additional components. To add your own components, see <LinkInline link="guide/component#write" />. To use a Vue component from an npm package, see <LinkInline link="guide/component#npm" />.
 
 ## `Arrow`
 
