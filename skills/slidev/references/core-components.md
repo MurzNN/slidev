@@ -195,6 +195,40 @@ Components from these sources are auto-imported:
 1. Built-in components
 2. Theme components
 3. Addon components
-4. `./components/` directory
+4. `./components/` directory (`*.vue`, `*.ts`, `*.js`, `*.jsx`, `*.tsx`, `*.md`)
 
-No import statements needed.
+No import statements needed for those.
+
+## NPM Vue Components
+
+Arbitrary npm packages are not auto-imported. The package must be Vue 3 and installed in the slides project.
+
+Use one of these:
+
+1. **One slide** — import it in that slide's single `<script setup>` block. The binding name is the tag, and other slides do not see it.
+
+```md
+<script setup lang="ts">
+import ExampleChart from 'example-vue-component'
+</script>
+
+<ExampleChart :value="42" />
+```
+
+2. **Every slide, unchanged component** — re-export it from `components/`. The filename becomes the PascalCase tag.
+
+```ts
+// components/ExampleChart.ts
+export { default } from 'example-vue-component'
+```
+
+Named export: `export { ExampleChart as default } from 'example-vue-charts'`.
+
+3. **Every slide, with local markup** — import it from a `.vue` file in `components/`. Files in `components/` are also available in layouts and other components.
+4. **Vue plugin, or a global component with no local file** — in `setup/main.ts`, call `app.use(plugin)` or `app.component('ExampleChart', ExampleChart)`. This covers slides, layouts, and global layers.
+
+Import the package CSS from the slide `<script setup>`, from the re-export module, from `styles/index.ts`, or from `setup/main.ts`.
+
+Do not reuse a built-in, theme, or addon component name. Those win over a later file in `components/` and over `app.component`.
+
+`slidev.components` in `vite.config.ts` is passed to `unplugin-vue-components` and replaces the matching field. A custom `resolvers` array drops the icon resolver. A custom `dirs` array drops the built-in and `components/` scan.
