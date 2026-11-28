@@ -22,4 +22,6 @@ export default defineAppSetup(({ app, router }) => {
 
 This can also be used as the main entrance of your Slidev app to do some initializations before the app starts.
 
+To register a component from an npm package with `app.component`, or to install a Vue plugin that provides components, see [Importing from npm Packages](../guide/component#npm).
+
 Learn more: [Vue Application API](https://v3.vuejs.org/api/application-api.html#component).

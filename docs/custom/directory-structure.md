@@ -25,6 +25,8 @@ Pattern: `./components/*.{vue,js,ts,jsx,tsx,md}`
 
 <LinkCard link="guide/component" />
 
+A `.vue` file here can wrap a component imported from an npm package, and a `.ts` file can re-export one so it is auto-imported in slides. See [Importing from npm Packages](../guide/component#npm).
+
 ## Layouts
 
 Pattern: `./layouts/*.{vue,js,ts,jsx,tsx}`
